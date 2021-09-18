@@ -36,7 +36,7 @@ public class 적어도대부분의배수 {
                 break;
             }
             else {
-                minNum += addNum;
+                minNum += 1;
             }
         }
         System.out.println(minNum);
