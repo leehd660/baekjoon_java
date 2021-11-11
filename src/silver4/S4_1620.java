@@ -11,22 +11,18 @@ public class S4_1620 {
         String numStr = bf.readLine();
         String[] numArr = numStr.split(" ");
         String[] arr = new String[Integer.parseInt(numArr[0])];
-//        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         for (int i=0; i<Integer.parseInt(numArr[0]); i++) {
             String pocketmon = bf.readLine();
-            arr[0] = pocketmon;
-//            map.put(pocketmon,i+1);
+            arr[i] = pocketmon;
+            map.put(pocketmon,i+1);
         }
         for (int i = 0; i<Integer.parseInt(numArr[1]); i++) {
             String test = bf.readLine();
             try {
                 int num = Integer.parseInt(test);
-                for (String s : map.keySet()) {
-                    if (num == map.get(s)) {
-                        bw.write(s);
-                        bw.write("\n");
-                    }
-                }
+                bw.write(arr[num-1]);
+                bw.write("\n");
             }
             catch (NumberFormatException nfe) {
                 int answer = map.get(test);
@@ -44,18 +40,18 @@ public class S4_1620 {
 //            this.id = id;
 //        }
 //    }
-    int binary (int key, int min, int max) {
-        int mid = 0;
-        while (min <= max) {
-            mid = (min + max) / 2;
-
-            if(key == arr[mid]) {
-                return mid;
-            } else if(key < arr[mid]) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
-            }
-        }
-    }
+//    int binary (int key, int min, int max) {
+//        int mid = 0;
+//        while (min <= max) {
+//            mid = (min + max) / 2;
+//
+//            if(key == arr[mid]) {
+//                return mid;
+//            } else if(key < arr[mid]) {
+//                high = mid - 1;
+//            } else {
+//                low = mid + 1;
+//            }
+//        }
+//    }
 }
