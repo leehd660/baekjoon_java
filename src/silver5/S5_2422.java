@@ -19,6 +19,7 @@ public class S5_2422 {
             check[i][0] = a;
             check[i][1] = b;
         }
+//        int count =0;
         int answer =0;
         for (int i=1; i<=N-2; i++) {
             for (int j=i+1; j<=N-1; j++) {
@@ -32,6 +33,19 @@ public class S5_2422 {
                 }
             }
         }
+//        for (int i=1; i<=N; i++) {
+//            boolean test = false;
+//            for (int j=0; j<M; j++) {
+//                if (check[j][0] == i || check[j][1] == i) {
+//                    test = true;
+//                    count++;
+//                }
+//            }
+//            if (test) {
+//                count--;
+//            }
+//        }
+//        int answer = ((N*(N-1)*(N-2))/6) - ((N-2)*M) + count;
         bw.write(String.valueOf(answer));
         bw.close();
     }
