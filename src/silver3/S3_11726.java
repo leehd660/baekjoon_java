@@ -1,0 +1,30 @@
+package silver3;
+
+import java.io.*;
+
+public class S3_11726 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        String numStr = bf.readLine();
+        int num = Integer.parseInt(numStr);
+        int maxTwo = num/2;
+        long answer =1;
+        for (int i=1; i<=maxTwo; i++){
+            int oneNum = num-(i*2);
+            int totalNum = oneNum+i;
+            answer += (factorial(totalNum) / (factorial(i)*factorial(oneNum)))%10007;
+        }
+//        answer = answer%10007;
+        bw.write(String.valueOf(answer));
+        bw.close();
+    }
+
+    static long factorial(int n) {
+        long answer = 1;
+        for (int i=1; i<=n; i++) {
+            answer = (answer*i%10007);
+        }
+        return answer;
+    }
+}
