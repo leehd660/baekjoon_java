@@ -1,6 +1,8 @@
 package silver3;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class S3_1699 {
     public static void main(String[] args) throws IOException {
@@ -9,19 +11,19 @@ public class S3_1699 {
         int N = Integer.parseInt(bf.readLine());
         int[] dp = new int[N+1];
         dp[0] = 0;
+        List<Integer> list = new ArrayList<>();
         for (int i=1; i<=N; i++) {
             if ((double)i % Math.sqrt(i) == 0) {
                 dp[i] = 1;
+                list.add(i);
             }
             else {
-                int num =0;
-                for (int j=i; j>0; j--) {
-                    if ((double)j % Math.sqrt(j) == 0) {
-                        num = j;
-                        break;
-                    }
+                int min = i;
+                for (int j=list.size()-1; j>=0; j--) {
+                    int num = list.get(j);
+                    min = Math.min(dp[num] + dp[i - num],min);
                 }
-                dp[i] = dp[num] + dp[i-num];
+                dp[i] = min;
             }
         }
         bw.write(String.valueOf(dp[N]));
