@@ -23,6 +23,8 @@ public class S1_2178 {
                 visited[i][j] = Integer.parseInt(mapArr[j]);
             }
         }
+        //count - 몇개의 칸을 밟아야 갈 수 있는 위치인지 파악
+        //numbers - 턴마다 갈 수 있는 위치의 수
         int count = 1;
         int numbers = 1;
         Deque<int[]> deque = new ArrayDeque<>();
