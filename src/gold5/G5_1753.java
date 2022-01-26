@@ -9,18 +9,18 @@ public class G5_1753 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         String VEstr = bf.readLine();
         StringTokenizer VEtoken = new StringTokenizer(VEstr);
-        int V = Integer.parseInt(VEtoken.nextToken());
+        short V = Short.parseShort(VEtoken.nextToken());
         int E = Integer.parseInt(VEtoken.nextToken());
-        int startPoint = Integer.parseInt(bf.readLine());
+        short startPoint = Short.parseShort(bf.readLine());
         int[] visited = new int[V+1];
 //        short[][] table = new short[V+1][V+1];
-        Map<Integer,Map<Integer,Integer>> map = new HashMap<>();
+        Map<Short, Map<Short,Byte>> map = new HashMap<>();
         for (int i=0; i<E; i++) {
             String road = bf.readLine();
             StringTokenizer roadToken = new StringTokenizer(road);
-            int start = Integer.parseInt(roadToken.nextToken());
-            int fin = Integer.parseInt(roadToken.nextToken());
-            int weight = Short.parseShort(roadToken.nextToken());
+            short start = Short.parseShort(roadToken.nextToken());
+            short fin = Short.parseShort(roadToken.nextToken());
+            byte weight = Byte.parseByte(roadToken.nextToken());
 //            if (table[start][fin] == 0) {
 //                table[start][fin] = weight;
 //            }
@@ -29,23 +29,23 @@ public class G5_1753 {
 //            }
             if (map.keySet().contains(start)) {
                 if (map.get(start).keySet().contains(fin)) {
-                    map.get(start).put(fin,Math.min(map.get(start).get(fin),weight));
+                    map.get(start).put(fin, (byte) Math.min(map.get(start).get(fin),weight));
                 }
                 else {
                     map.get(start).put(fin,weight);
                 }
             }
             else {
-                Map<Integer, Integer> innerMap = new HashMap<>();
+                Map<Short, Byte> innerMap = new HashMap<>();
                 innerMap.put(fin,weight);
                 map.put(start,innerMap);
             }
         }
-        Deque<Integer> deque = new ArrayDeque<>();
+        Deque<Short> deque = new ArrayDeque<>();
         deque.add(startPoint);
         while (!deque.isEmpty()) {
             //point는 여기서 출발하는 점
-            int point = deque.pollFirst();
+            short point = deque.pollFirst();
 //            for (int i=1; i<V+1; i++) {
 //                if (table[point][i] != 0) {
 //                    if (visited[i] == 0) {
@@ -58,7 +58,7 @@ public class G5_1753 {
 //                }
 //            }
             if (map.get(point) != null) {
-                for (int key : map.get(point).keySet()) {
+                for (short key : map.get(point).keySet()) {
                     if (visited[key] == 0) {
                         visited[key] = visited[point] + map.get(point).get(key);
                         deque.add(key);
@@ -72,7 +72,7 @@ public class G5_1753 {
                 }
             }
         }
-        for (int i=1; i<V+1; i++) {
+        for (short i=1; i<V+1; i++) {
             if (i!=startPoint && visited[i]==0) {
                 bw.write("INF\n");
             }
