@@ -10,25 +10,25 @@ public class G5_12865 {
         StringTokenizer NKtoken = new StringTokenizer(bf.readLine());
         int N = Integer.parseInt(NKtoken.nextToken());
         int K = Integer.parseInt(NKtoken.nextToken());
-        int[] weightTable = new int[K+1];
-        for (int i=0; i<N; i++) {
+        int[][] table = new int[N+1][2];
+        for (int i=1; i<=N; i++) {
             StringTokenizer WVtoken = new StringTokenizer(bf.readLine());
-            int w = Integer.parseInt(WVtoken.nextToken());
-            int v = Integer.parseInt(WVtoken.nextToken());
-            weightTable[w] = Math.max(weightTable[w], v);
+            table[i][0] = Integer.parseInt(WVtoken.nextToken());
+            table[i][1] = Integer.parseInt(WVtoken.nextToken());
         }
-        int answer = 0;
-        int[] dp = new int[K+1];
-        for (int i=1; i<K+1; i++) {
-            dp[i] = weightTable[i];
-            for (int j=i-1; j>=j/2; j--) {
-                if (i-j<j) {
-                    dp[i] = Math.max(dp[i], weightTable[j] + weightTable[i - j]);
+//        int answer = 0;
+        int[][] dp = new int[N+1][K+1];
+        for (int i=1; i<=N; i++) {
+            for (int j=1; j<=K; j++) {
+                if (j>=table[i][0]) {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-table[i][0]] + table[i][1]);
+                }
+                else {
+                    dp[i][j] = dp[i-1][j];
                 }
             }
-            answer = Math.max(dp[i], answer);
         }
-        bw.write(String.valueOf(answer));
+        bw.write(String.valueOf(dp[N][K]));
         bw.close();
     }
 }
