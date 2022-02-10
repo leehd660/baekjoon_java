@@ -11,17 +11,33 @@ public class G5_2293 {
         int N = Integer.parseInt(NKtoken.nextToken());
         int K = Integer.parseInt(NKtoken.nextToken());
         int[] dp = new int[K+1];
+        dp[0] = 1;
         for (int i=1; i<=N; i++) {
             int value = Integer.parseInt(bf.readLine());
-            for (int j=1; j<=K; j++) {
+//            for (int j=value; j<=K; j++) {
+//                dp[j] += dp[j-value];
+//              }
+
+//            for (int j=1; j<=K; j++) {
+//                int compare = 0;
+//                try {
+//                    if (j%value==0) {
+//                        compare = 1;
+//                    }
+//                    dp[j] = (dp[j]+ Math.max(compare, dp[j-value]));
+//                }
+//                catch (IndexOutOfBoundsException e) {
+//                    dp[j] = (dp[j] + compare);
+//                }
+//            }
+            for (int j=value; j<=K; j++) {
                 int compare = 0;
-                try {
-                    if (j%value==0) {
+                if (j - value >= 0) {
+                    if (j % value == 0) {
                         compare = 1;
                     }
-                    dp[j] = (dp[j]+ Math.max(compare, dp[j-value]));
-                }
-                catch (IndexOutOfBoundsException e) {
+                    dp[j] = (dp[j] + Math.max(compare, dp[j - value]));
+                } else {
                     dp[j] = (dp[j] + compare);
                 }
             }
