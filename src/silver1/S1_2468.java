@@ -49,7 +49,6 @@ public class S1_2468 {
         bw.write(String.valueOf(answer));
         bw.close();
     }
-
     static void BFS(Deque<int[]> deque, int minNum) {
         int[] xArr = {1,-1,0,0};
         int[] yArr = {0,0,1,-1};
