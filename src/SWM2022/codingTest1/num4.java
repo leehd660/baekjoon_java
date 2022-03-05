@@ -1,4 +1,4 @@
-package SWM.codingTest1;
+package SWM2022.codingTest1;
 
 import java.util.ArrayList;
 import java.util.List;

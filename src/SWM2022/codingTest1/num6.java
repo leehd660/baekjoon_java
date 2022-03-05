@@ -1,4 +1,4 @@
-package SWM.codingTest1;
+package SWM2022.codingTest1;
 
 public class num6 {
 //    그래프 문제였는데, 정점과 정점을 잇는 라인에 비용이 있음

@@ -1,4 +1,4 @@
-package SWM.codingTest1;
+package SWM2022.codingTest1;
 
 public class num2 {
     //산사태자료 구조라고, 레벨 층이 있고, 층마다 크기가 있음
